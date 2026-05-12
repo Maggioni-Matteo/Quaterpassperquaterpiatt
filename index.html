@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Quater pass per quater piatt — 21ª passeggiata enogastronomica nel Parco del Curone. Domenica 3 Maggio 2026.">
+  <title>Quater pass per quater piatt · 21ª edizione · 3 Maggio 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── CSS VARIABLES & BASE ── */
+    :root {
+      --bg-primary: #FAF8F5;
+      --bg-secondary: #EAE5D9;
+      --bg-tertiary: #D6CEC4;
+      --text-primary: #2C3523;
+      --text-secondary: #4A5240;
+      --accent-wine: #722F37;
+      --accent-olive: #556B2F;
+      --accent-terracotta: #B3543E;
+      --accent-sand: #E3D5C8;
+    }
+
+    *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid #e5e7eb; }
+
+    html { scroll-behavior: smooth; line-height: 1.5; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img, svg, video { display: block; vertical-align: middle; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    b, strong { font-weight: bolder; }
+    h1,h2,h3,h4,h5,h6 { font-size: inherit; font-weight: inherit; }
+    ol, ul, menu { list-style: none; }
+    button { cursor: pointer; background: transparent; border: none; font: inherit; color: inherit; }
+
+    /* ── FONTS ── */
+    .font-serif { font-family: 'Cormorant Garamond', Georgia, serif; font-feature-settings: "liga","dlig"; }
+
+    /* ── TYPOGRAPHY HELPERS ── */
+    .overline {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      font-weight: 600;
+      color: var(--accent-olive);
+    }
+
+    /* ── GRAIN TEXTURE ── */
+    .grain::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.08;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FLOAT ANIMATION (logo) ── */
+    @keyframes floatSoft {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .float-soft { animation: floatSoft 6s ease-in-out infinite; }
+
+    /* ── MARQUEE ── */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track { animation: marquee 35s linear infinite; }
+
+    /* ── BOUNCE ── */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+      50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
+    }
+    .animate-bounce { animation: bounce 1s infinite; }
+
+    /* ── SELECTION ── */
+    ::selection { background: var(--accent-wine); color: var(--bg-primary); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 6px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-olive); }
+
+    /* ════════════════════════════════════
+       NAVBAR
+    ════════════════════════════════════ */
+    /* ══════════════════════════════════
+   NAVBAR
+══════════════════════════════════ */
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+/* MOBILE */
+#navbar {
+  background: rgba(244, 241, 235, 0.96);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  backdrop-filter: blur(18px);
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  #navbar {
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: blur(24px);
+  }
+}
+
+#navbar nav {
+  max-width: 80rem;
+  margin: 0 auto;
+
+  padding: 1rem 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  #navbar nav {
+    padding: 1rem 2.5rem;
+  }
+}
+
+/* ══════════════════════════════════
+   LOGO
+══════════════════════════════════ */
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  text-decoration: none;
+}
+
+.nav-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+/* MOBILE */
+.nav-logo-text {
+  color: var(--text-primary);
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .nav-logo-text {
+    color: white;
+  }
+}
+
+.nav-logo-text em {
+  font-style: italic;
+  color: #00be5a;
+}
+
+/* ══════════════════════════════════
+   DESKTOP LINKS
+══════════════════════════════════ */
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+
+  list-style: none;
+}
+
+@media (min-width: 1024px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-links a {
+  position: relative;
+
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+
+  color: white;
+
+  transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+  height: 1.5px;
+
+  background: var(--accent-wine);
+
+  transition: width 0.2s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ══════════════════════════════════
+   CTA
+══════════════════════════════════ */
+
+.nav-cta {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9999px;
+
+  background: var(--accent-wine);
+  color: white;
+
+  padding: 0.7rem 1.25rem;
+
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+@media (min-width: 768px) {
+  .nav-cta {
+    display: inline-flex;
+  }
+}
+
+.nav-cta:hover {
+  background: #5A242B;
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════
+   MOBILE TOGGLE
+══════════════════════════════════ */
+
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.5rem;
+
+  border: none;
+  background: transparent;
+
+  border-radius: 9999px;
+  cursor: pointer;
+
+  color: var(--text-primary);
+
+  transition: background 0.2s ease;
+}
+
+.nav-toggle:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+@media (min-width: 1024px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════
+   MOBILE MENU
+══════════════════════════════════ */
+
+#mobile-menu {
+  display: none;
+  flex-direction: column;
+
+  padding: 0 1.5rem 1.75rem;
+
+  background: rgba(244, 241, 235, 0.98);
+  backdrop-filter: blur(18px);
+
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+#mobile-menu.open {
+  display: flex;
+}
+
+#mobile-menu a {
+  padding: 1.1rem 0;
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  color: var(--text-primary);
+
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  transition: opacity 0.2s ease;
+}
+
+#mobile-menu a:hover {
+  opacity: 0.7;
+}
+
+#mobile-menu .mobile-cta {
+  margin-top: 1.5rem;
+
+  border-bottom: none;
+  border-radius: 9999px;
+
+  background: var(--accent-wine);
+  color: white;
+
+  text-align: center;
+
+  padding: 1rem;
+
+  font-weight: 600;
+}
+
+    /* ════════════════════════════════════
+       HERO
+    ════════════════════════════════════ */
+    #top {
+      position: relative; min-height: 100vh; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url("https://customer-assets.emergentagent.com/job_d291f1d8-231d-4047-bbe7-4a058fa7a21d/artifacts/2joev5gn_Nel_parco_del_Curone_l%27Oasi_del_WWF.jpg");
+      background-size: cover; background-position: center;
+      transform: scale(1.05);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.25), rgba(0,0,0,0.7));
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+    }
+    .hero-logo { width: clamp(9rem, 15vw, 13rem); margin-bottom: 2rem; filter: drop-shadow(0 25px 25px rgba(0,0,0,0.15)); }
+    .hero-edition { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.25em; font-weight: 600; color: var(--accent-sand); margin-bottom: 1.25rem; }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      color: white;
+      font-size: clamp(3rem, 8vw, 5.375rem);
+      line-height: 0.95; letter-spacing: -0.025em;
+      max-width: 64rem;
+    }
+    .hero-title .italic { font-style: italic; color: #F1D9A8; display: block; }
+    .hero-title .subtitle { display: block; color: var(--accent-sand); font-size: clamp(2rem, 5vw, 3.75rem); margin-top: 0.75rem; font-style: normal; }
+    .hero-desc {
+      margin-top: 2rem; max-width: 42rem;
+      color: rgba(255,255,255,0.9); font-size: clamp(1rem, 1.5vw, 1.125rem);
+      line-height: 1.625; font-weight: 300; letter-spacing: 0.025em;
+    }
+    .hero-meta {
+      margin-top: 2.5rem; display: flex; flex-wrap: wrap;
+      align-items: center; gap: 1.25rem; justify-content: center; color: white;
+    }
+    .hero-meta-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; letter-spacing: 0.025em; }
+    .hero-dot { width: 4px; height: 4px; border-radius: 9999px; background: rgba(255,255,255,0.6); }
+    @media (max-width: 639px) { .hero-dot { display: none; } }
+    .hero-ctas { margin-top: 2.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; justify-content: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border-radius: 9999px; background: var(--accent-terracotta);
+      color: white; padding: 1rem 2rem;
+      font-size: clamp(0.875rem, 1.2vw, 1rem); font-weight: 500; letter-spacing: 0.1em;
+      transition: all 0.3s; box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+    .btn-primary:hover { background: #9a4332; transform: scale(1.04); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border-radius: 9999px; border: 1px solid rgba(255,255,255,0.6);
+      color: white; padding: 1rem 2rem;
+      font-size: clamp(0.875rem, 1.2vw, 1rem); font-weight: 500; letter-spacing: 0.1em;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+    .scroll-down {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.8); transition: color 0.15s;
+    }
+    .scroll-down:hover { color: white; }
+
+    /* ════════════════════════════════════
+       ABOUT
+    ════════════════════════════════════ */
+    #about {
+      position: relative; padding: 6rem 1.5rem;
+      background: var(--bg-primary); overflow: hidden;
+    }
+    @media (min-width: 768px) { #about { padding: 9rem 2.5rem; } }
+    .about-inner { max-width: 72rem; margin: 0 auto; display: grid; gap: 2.5rem 4rem; }
+    @media (min-width: 768px) { .about-inner { grid-template-columns: 4fr 8fr; align-items: start; } }
+    .about-sidebar .rule { margin-top: 1.5rem; height: 1px; width: 4rem; background: var(--accent-wine); }
+    .about-sidebar .since { margin-top: 2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent-olive); font-weight: 500; }
+    .about-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      line-height: 1.02; color: var(--text-primary); letter-spacing: -0.025em;
+    }
+    .about-title em { font-style: italic; color: var(--accent-wine); }
+    .about-paragraphs {
+      margin-top: 2.5rem; display: grid; gap: 2rem;
+      color: var(--text-secondary); font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.625;
+    }
+    @media (min-width: 640px) { .about-paragraphs { grid-template-columns: 1fr 1fr; } }
+    .about-stats {
+      margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2.5rem;
+    }
+    @media (min-width: 768px) { .about-stats { grid-template-columns: repeat(4,1fr); } }
+    .stat { border-top: 1px solid var(--bg-tertiary); padding-top: 1rem; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.25rem, 4vw, 3rem); color: var(--accent-wine); line-height: 1;
+    }
+    .stat-label { margin-top: 0.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-olive); }
+
+    #programma {
+  position: relative;
+  padding: 6rem 1.5rem;
+  background: var(--bg-secondary);
+}
+
+@media (min-width: 768px) {
+  #programma {
+    padding: 9rem 2.5rem;
+  }
+}
+
+.programma-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.programma-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  margin-top: 1.5rem;
+}
+
+.programma-title em {
+  font-style: italic;
+  color: var(--accent-wine);
+}
+
+.programma-desc {
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+  font-size: clamp(1rem,1.2vw,1.125rem);
+  line-height: 1.625;
+  max-width: 42rem;
+}
+
+/* ══════════════════════════════════
+   TIMES
+══════════════════════════════════ */
+
+.times-grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .times-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+.time-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  background: var(--bg-primary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: 1rem;
+
+  padding: 1.25rem 1.5rem;
+}
+
+.time-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-olive);
+}
+
+.time-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.875rem;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-top: 0.25rem;
+}
+
+/* ══════════════════════════════════
+   TIMELINE
+══════════════════════════════════ */
+
+.timeline {
+  margin-top: 5rem;
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--bg-tertiary);
+}
+
+@media (min-width: 768px) {
+  .timeline-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  margin: 0;
+  padding: 0;
+}
+
+.tappa {
+  position: relative;
+  min-height: 220px;
+}
+
+/* MOBILE */
+
+.tappa-body {
+  padding-left: 4.5rem;
+}
+
+.tappa-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+
+  background: var(--accent-wine);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 0 6px var(--bg-secondary);
+  z-index: 5;
+}
+
+.tappa-n {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--accent-terracotta);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.tappa-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.875rem, 3vw, 2.25rem);
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.tappa-meta {
+  margin-top: 0.75rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--accent-olive);
+  font-size: 0.875rem;
+}
+
+.tappa-desc {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.625;
+  max-width: 28rem;
+}
+
+.tappa-spacer {
+  display: none;
+}
+
+/* DESKTOP */
+
+@media (min-width: 768px) {
+
+  .tappa {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    align-items: center;
+  }
+
+  .tappa-dot {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* TAPPE A SINISTRA */
+
+  .tappa.odd .tappa-body {
+    grid-column: 1;
+
+    padding-left: 0;
+    padding-right: 2rem;
+
+    text-align: right;
+  }
+
+  .tappa.odd .tappa-meta {
+    justify-content: flex-end;
+  }
+
+  .tappa.odd .tappa-desc {
+    margin-left: auto;
+  }
+
+  /* TAPPE A DESTRA */
+
+  .tappa.even .tappa-body {
+    grid-column: 3;
+
+    padding-left: 2rem;
+    padding-right: 0;
+
+    text-align: left;
+  }
+
+}
+
+/* ══════════════════════════════════
+   NOTES
+══════════════════════════════════ */
+
+.notes-grid {
+  margin-top: 5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .notes-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+.note-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.note-title {
+  margin-top: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.note-body {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.625;
+}
+
+    /* ════════════════════════════════════
+       ISCRIZIONI
+    ════════════════════════════════════ */
+    #iscrizioni { position: relative; padding: 6rem 1.5rem; background: var(--bg-primary); }
+    @media (min-width: 768px) { #iscrizioni { padding: 9rem 2.5rem; } }
+    .iscr-inner { max-width: 72rem; margin: 0 auto; }
+    .iscr-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      line-height: 1.02; color: var(--text-primary); letter-spacing: -0.025em; margin-top: 1.5rem;
+    }
+    .iscr-title em { font-style: italic; color: var(--accent-wine); }
+    .iscr-desc { margin-top: 1.5rem; color: var(--text-secondary); font-size: clamp(1rem,1.2vw,1.125rem); line-height: 1.625; }
+
+    .prices-grid { margin-top: 3.5rem; display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .prices-grid { grid-template-columns: repeat(3,1fr); } }
+    .price-card {
+      border-radius: 1.5rem; padding: 2rem 2.5rem; border: 1px solid;
+      transition: transform 0.5s;
+    }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card.dark { background: #2C3523; border-color: #2C3523; color: var(--bg-primary); }
+    .price-card.light { background: var(--bg-secondary); border-color: var(--bg-tertiary); color: var(--text-primary); }
+    .price-label { margin-top: 1.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; }
+    .price-card.dark .price-label { color: var(--accent-sand); }
+    .price-card.light .price-label { color: var(--accent-olive); }
+    .price-amount { margin-top: 0.75rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1; }
+    .price-note { margin-top: 1rem; font-size: 0.875rem; }
+    .price-card.dark .price-note { color: var(--accent-sand); }
+    .price-card.light .price-note { color: var(--text-secondary); }
+
+    /* Punti vendita */
+    .punti-header { margin-top: 5rem; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+    .punti-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); color: var(--text-primary); margin-top: 1rem; }
+    .punti-count { display: flex; align-items: center; gap: 0.5rem; color: var(--accent-olive); font-size: 0.875rem; }
+    .negozi-grid {
+      margin-top: 2rem;
+      display: grid; gap: 1px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--bg-tertiary);
+      border-radius: 1rem; overflow: hidden;
+    }
+    @media (min-width: 640px) { .negozi-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .negozi-grid { grid-template-columns: repeat(3,1fr); } }
+    .negozio {
+      background: var(--bg-primary); padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      transition: background 0.3s;
+    }
+    .negozio:hover { background: var(--bg-secondary); }
+    .negozio-info {}
+    .negozio-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-primary); line-height: 1.25; }
+    .negozio-addr { margin-top: 0.25rem; font-size: 0.875rem; color: var(--text-secondary); }
+    .negozio-city { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; margin-top: 0.5rem; color: var(--accent-olive); }
+
+    /* ════════════════════════════════════
+       GALLERIA
+    ════════════════════════════════════ */
+    #galleria { position: relative; padding: 6rem 1.5rem; background: var(--bg-secondary); }
+    @media (min-width: 768px) { #galleria { padding: 9rem 2.5rem; } }
+    .galleria-inner { max-width: 80rem; margin: 0 auto; }
+    .galleria-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      line-height: 1.02; color: var(--text-primary); letter-spacing: -0.025em; margin-top: 1.5rem;
+    }
+    .galleria-title em { font-style: italic; color: var(--accent-wine); }
+    .gallery-grid {
+      margin-top: 3rem; display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 0.75rem 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(4,1fr); gap: 1rem; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .gallery-item:nth-child(4) { grid-column: span 2; }
+      .gallery-item:nth-child(5) { grid-column: span 2; }
+    }
+    .gallery-item {
+      overflow: hidden; border-radius: 1rem;
+      background: var(--bg-tertiary); position: relative;
+      aspect-ratio: 1;
+    }
+    @media (min-width: 768px) {
+      .gallery-item:nth-child(1) { aspect-ratio: auto; }
+      .gallery-item:nth-child(4),
+      .gallery-item:nth-child(5) { aspect-ratio: 2.2/1; }
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      opacity: 0; transition: opacity 0.5s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-caption {
+      position: absolute; bottom: 1rem; left: 1rem; right: 1rem;
+      color: white; font-size: 0.875rem; font-family: 'Cormorant Garamond', serif;
+      font-style: italic; opacity: 0; transform: translateY(8px);
+      transition: all 0.5s;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+    .galleria-note { margin-top: 2rem; font-size: 0.875rem; color: var(--accent-olive); letter-spacing: 0.025em; }
+
+    /* ════════════════════════════════════
+       DONAZIONI
+    ════════════════════════════════════ */
+    #donazioni { position: relative; padding: 6rem 1.5rem; background: var(--bg-primary); overflow: hidden; }
+    @media (min-width: 768px) { #donazioni { padding: 9rem 2.5rem; } }
+    .donazioni-inner { max-width: 72rem; margin: 0 auto; }
+    .donazioni-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      line-height: 1.02; color: var(--text-primary); letter-spacing: -0.025em; margin-top: 1.5rem;
+    }
+    .donazioni-title em { font-style: italic; color: var(--accent-wine); }
+    .donazioni-desc { margin-top: 1.5rem; color: var(--text-secondary); font-size: clamp(1rem,1.2vw,1.125rem); line-height: 1.625; }
+
+    .assoc-grid { margin-top: 3.5rem; display: grid; gap: 1rem; }
+    @media (min-width: 640px) { .assoc-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .assoc-grid { grid-template-columns: repeat(3,1fr); } }
+    .assoc-card {
+      position: relative; background: var(--bg-secondary);
+      border: 1px solid var(--bg-tertiary); border-radius: 1.5rem;
+      padding: 2rem; overflow: hidden;
+      transition: transform 0.5s;
+    }
+    .assoc-card:hover { transform: translateY(-4px); }
+    .assoc-bubble {
+      position: absolute; top: -2.5rem; right: -2.5rem;
+      width: 8rem; height: 8rem; border-radius: 9999px;
+      background: rgba(114,47,55,0.05); transition: background 0.7s;
+    }
+    .assoc-card:hover .assoc-bubble { background: rgba(114,47,55,0.1); }
+    .assoc-logo {
+      margin-top: 1.5rem; height: 6rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 0.75rem; background: var(--bg-primary); padding: 0.75rem;
+    }
+    .assoc-logo img { max-height: 100%; max-width: 100%; object-fit: contain; }
+    .assoc-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--accent-olive); margin-top: 1.5rem; }
+    .assoc-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.375rem, 2vw, 1.75rem); color: var(--text-primary); line-height: 1.25; margin-top: 0.5rem; }
+    .assoc-city { font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+    /* Marquee partner */
+    .partner-section { margin-top: 5rem; }
+    .partner-label { text-align: center; margin-bottom: 1.5rem; }
+    .marquee-wrap { position: relative; overflow: hidden; }
+    .marquee-track {
+      display: flex; gap: 4rem; white-space: nowrap;
+      padding: 1.5rem 0;
+    }
+    .marquee-item {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.5rem, 2.5vw, 1.875rem); color: rgba(85,107,47,0.7);
+      flex-shrink: 0;
+    }
+    .marquee-dot { color: var(--accent-terracotta); margin-left: 4rem; }
+    .fade-left, .fade-right {
+      position: absolute; top: 0; bottom: 0; width: 6rem;
+      pointer-events: none;
+    }
+    .fade-left { left: 0; background: linear-gradient(to right, var(--bg-primary), transparent); }
+    .fade-right { right: 0; background: linear-gradient(to left, var(--bg-primary), transparent); }
+
+    /* ════════════════════════════════════
+       CONTATTI
+    ════════════════════════════════════ */
+    #contatti {
+      position: relative; padding: 6rem 1.5rem;
+      background: #2C3523; color: var(--bg-primary); overflow: hidden;
+    }
+    @media (min-width: 768px) { #contatti { padding: 9rem 2.5rem; } }
+    .contatti-glow-1 {
+      position: absolute; top: -6rem; right: -6rem;
+      width: 24rem; height: 24rem; border-radius: 9999px;
+      background: rgba(114,47,55,0.3); filter: blur(64px);
+    }
+    .contatti-glow-2 {
+      position: absolute; bottom: -6rem; left: -6rem;
+      width: 24rem; height: 24rem; border-radius: 9999px;
+      background: rgba(85,107,47,0.3); filter: blur(64px);
+    }
+    .contatti-inner { position: relative; max-width: 72rem; margin: 0 auto; }
+    .contatti-overline { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.25em; font-weight: 600; color: #F1D9A8; }
+    .contatti-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.98; letter-spacing: -0.025em; margin-top: 1.5rem;
+    }
+    .contatti-title em { font-style: italic; color: #F1D9A8; display: block; }
+    .contatti-grid { margin-top: 4rem; display: grid; gap: 2.5rem; }
+    @media (min-width: 768px) { .contatti-grid { grid-template-columns: repeat(3,1fr); } }
+    .contatti-item { border-top: 1px solid rgba(250,248,245,0.2); padding-top: 1.5rem; transition: border-color 0.15s; }
+    a.contatti-item:hover { border-color: #F1D9A8; }
+    .contatti-item-label { margin-top: 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--accent-sand); }
+    .contatti-item-value { margin-top: 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.125rem, 1.8vw, 1.5rem); transition: color 0.15s; word-break: break-all; }
+    a.contatti-item:hover .contatti-item-value { color: #F1D9A8; }
+    .social-links { margin-top: 1.5rem; display: flex; gap: 1rem; }
+    .social-link {
+      width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+      border: 1px solid rgba(250,248,245,0.3);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+    }
+    .social-link:hover { background: #F1D9A8; color: #2C3523; }
+    .footer-bottom {
+      margin-top: 6rem; padding-top: 2.5rem;
+      border-top: 1px solid rgba(250,248,245,0.15);
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 1rem;
+      font-size: 0.875rem; color: var(--accent-sand);
+    }
+    .footer-bottom em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     NAVBAR
+══════════════════════════════════ -->
+<header id="navbar">
+  <nav>
+    <a href="#top" class="nav-logo">
+      <span class="nav-logo-text font-serif">Quater <em>pass</em> per quater piatt</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">L'Evento</a></li>
+      <li><a href="#programma">Programma</a></li>
+      <li><a href="#iscrizioni">Iscrizioni</a></li>
+      <li><a href="#galleria">Galleria</a></li>
+      <li><a href="#donazioni">Associazioni</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="#iscrizioni" class="nav-cta">Iscriviti</a>
+      <button class="nav-toggle" id="menu-btn" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu">
+    <a href="#about">L'Evento</a>
+    <a href="#programma">Programma</a>
+    <a href="#iscrizioni">Iscrizioni</a>
+    <a href="#galleria">Galleria</a>
+    <a href="#donazioni">Associazioni</a>
+    <a href="#contatti">Contatti</a>
+    <a href="#iscrizioni" class="mobile-cta">Iscriviti</a>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="img/logo4pass-2.png"
+         alt="Quater pass per quater piatt logo" class="hero-logo">
+    <span class="hero-edition">— 21ª edizione —</span>
+    <h1 class="hero-title font-serif">
+      Passeggiata
+      <span class="italic">enogastronomica</span>
+      <span class="subtitle">nel Parco del Curone</span>
+    </h1>
+    <p class="hero-desc">
+      12 km non competitivi tra le colline brianzole, sei tappe di sapori autentici,
+      un calice di vino a ogni sosta. Un giorno, una comunità, un territorio.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+        <span>Domenica 3 Maggio 2026</span>
+      </div>
+      <span class="hero-dot"></span>
+      <div class="hero-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Montevecchia — Lecco</span>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#iscrizioni" class="btn-primary">Iscriviti ora</a>
+      <a href="#programma" class="btn-secondary">Scopri il programma</a>
+    </div>
+    <a href="#about" class="scroll-down" aria-label="Scorri in giù">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ABOUT
+══════════════════════════════════ -->
+<section id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <span class="overline">— Il cammino —</span>
+      <div class="about-sidebar">
+        <div class="rule"></div>
+        <p class="since">dal 2005, insieme</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <h2 class="about-title font-serif">
+        <em>Dodici chilometri</em> di colline, boschi e cascine — dove ogni passo diventa un piatto, ogni sosta un brindisi.
+      </h2>
+      <div class="about-paragraphs">
+        <p>La <strong>Quater pass per quater piatt</strong> è una passeggiata enogastronomica non competitiva che attraversa il Parco Regionale di Montevecchia e della Valle del Curone, nel cuore verde della Brianza lecchese.</p>
+        <p>Sei tappe, sei sapori della tradizione: dall'aperitivo in cascina al formaggio in cantina, passando per risotto, brasato e sorbetto. A ogni fermata un calice di vino, tra vigne, farfalle e panorami che arrivano fino alle Grigne.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-num font-serif">12</div><div class="stat-label">chilometri</div></div>
+        <div class="stat"><div class="stat-num font-serif">6</div><div class="stat-label">tappe di gusto</div></div>
+        <div class="stat"><div class="stat-num font-serif">21ª</div><div class="stat-label">edizione</div></div>
+        <div class="stat"><div class="stat-num font-serif">∞</div><div class="stat-label">brindisi</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PROGRAMMA
+══════════════════════════════════ -->
+<section id="programma">
+  <div class="programma-inner">
+    <div class="reveal">
+      <span class="overline">— Il percorso —</span>
+      <h2 class="programma-title font-serif">Sette tappe,<em> un solo respiro.</em></h2>
+      <p class="programma-desc">Partenza e arrivo in Via Fontanile (zona basket), a Montevecchia. Ad ogni tappa un calice di vino bianco o rosso e acqua fresca per tutti.</p>
+    </div>
+
+    <div class="times-grid reveal">
+      <div class="time-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div><div class="time-label">Partenza</div><div class="time-value font-serif">10:45</div></div>
+      </div>
+      <div class="time-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div><div class="time-label">Termine partenze</div><div class="time-value font-serif">12:30</div></div>
+      </div>
+      <div class="time-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div><div class="time-label">Fine manifestazione</div><div class="time-value font-serif">18:00</div></div>
+      </div>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-line"></div>
+      <ul>
+
+        <li class="tappa odd reveal">
+          <div class="tappa-body">
+            <div class="tappa-n">Tappa 01</div>
+            <h3 class="tappa-title font-serif">Aperitivo di Benvenuto</h3>
+            <div class="tappa-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Località Cavigiolo</span>
+            </div>
+            <p class="tappa-desc">Un calice per aprire la strada, tra cascine e prime vigne.</p>
+          </div>
+          <div class="tappa-dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg>
+          </div>
+          <div class="tappa-spacer"></div>
+        </li>
+
+        <li class="tappa even reveal">
+          <div class="tappa-spacer"></div>
+          <div class="tappa-dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+          </div>
+          <div class="tappa-body">
+            <div class="tappa-n">Tappa 02</div>
+            <h3 class="tappa-title font-serif">Antipasto</h3>
+            <div class="tappa-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Località Regondino</span>
+            </div>
+            <p class="tappa-desc">Salame nostrano, coppa, pancetta e prosciutto cotto — dagli Alpini di Cernusco Lombardone.</p>
+          </div>
+        </li>
+
+        <li class="tappa odd reveal">
+          <div class="tappa-body">
+            <div class="tappa-n">Tappa 03</div>
+            <h3 class="tappa-title font-serif">Primi Piatti</h3>
+            <div class="tappa-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Località Valfredda</span>
+            </div>
+            <p class="tappa-desc">Risotto al rosmarino oppure pasta al pomodoro e luganega, alla Cascina Casati.</p>
+          </div>
+          <div class="tappa-dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M7 21h10"/><path d="M19.5 12 22 6"/><path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62"/><path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62"/><path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62"/></svg>
+          </div>
+          <div class="tappa-spacer"></div>
+        </li>
+
+        <li class="tappa even reveal">
+          <div class="tappa-spacer"></div>
+          <div class="tappa-dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16.4 13.7A6.5 6.5 0 1 0 6.28 6.6c-1.1 3.13-.78 3.9-3.18 6.08A3 3 0 0 0 5 18c4 0 8.4-1.8 11.4-4.3"/><path d="m18.5 6 2.19 4.5a6.48 6.48 0 0 1-2.29 7.2C15.4 20.2 11 22 7 22a3 3 0 0 1-2.68-1.66L2.4 16.5"/><circle cx="12.5" cy="8.5" r="2.5"/></svg>
+          </div>
+          <div class="tappa-body">
+            <div class="tappa-n">Tappa 04</div>
+            <h3 class="tappa-title font-serif">Secondi Piatti</h3>
+            <div class="tappa-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Oratorio di Montevecchia</span>
+            </div>
+            <p class="tappa-desc">Brasato con polenta o roast beef, con patatine fritte.</p>
+          </div>
+        </li>
+
+        <li class="tappa odd reveal">
+          <div class="tappa-body">
+            <div class="tappa-n">Tappa 05</div>
+            <h3 class="tappa-title font-serif">Sorbetto alla Frutta</h3>
+            <div class="tappa-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Località Oliva — Quattrostrade</span>
+            </div>
+            <p class="tappa-desc">La pausa dolce, prima dell'ultima salita.</p>
+          </div>
+          <div class="tappa-dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17c5 0 8-2.69 8-6H4c0 3.31 3 6 8 6m-4 4h8m-4-3v3M5.14 11a3.5 3.5 0 1 1 6.71 0"/><path d="M12.14 11a3.5 3.5 0 1 1 6.71 0"/><path d="M15.5 6.5a3.5 3.5 0 1 0-7 0"/></svg>
+          </div>
+          <div class="tappa-spacer"></div>
+        </li>
+
+        <li class="tappa even reveal">
+          <div class="tappa-spacer"></div>
+          <div class="tappa-dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4.6 13.11 5.79-3.21c1.89-1.05 4.79 1.78 3.71 3.71l-3.22 5.81C8.8 23.16.79 15.23 4.6 13.11Z"/><path d="m10.5 9.5-1-2.29C9.2 6.48 8.8 6 8 6H4.5C2.79 6 2 6.5 2 8.5a7.71 7.71 0 0 0 2 4.83"/><path d="M8 6c0-1.55.24-4-2-4-2 0-2.5 2.17-2.5 4"/><path d="m14.5 13.5 2.29 1c.73.3 1.21.7 1.21 1.5v3.5c0 1.71-.5 2.5-2.5 2.5a7.71 7.71 0 0 1-4.83-2"/><path d="M18 16c1.55 0 4-.24 4 2 0 2-2.17 2.5-4 2.5"/></svg>
+          </div>
+          <div class="tappa-body">
+            <div class="tappa-n">Tappa 06</div>
+            <h3 class="tappa-title font-serif">Formaggi</h3>
+            <div class="tappa-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Cantina del Ceresè</span>
+            </div>
+            <p class="tappa-desc">Selezione di formaggi misti, caprini e vaccini del territorio.</p>
+          </div>
+        </li>
+
+        <li class="tappa odd reveal">
+          <div class="tappa-body">
+            <div class="tappa-n">Tappa 07</div>
+            <h3 class="tappa-title font-serif">Dessert · Caffè · Digestivo</h3>
+            <div class="tappa-meta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Arrivo — Via Fontanile</span>
+            </div>
+            <p class="tappa-desc">Si chiude come si apre: insieme. Dolce, caffè e un ultimo sorso.</p>
+          </div>
+          <div class="tappa-dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg>
+          </div>
+          <div class="tappa-spacer"></div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="notes-grid reveal">
+      <div class="note-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>
+        <div class="note-title font-serif">Ritrovo</div>
+        <p class="note-body">Via del Fontanile, Montevecchia (LC). Ampi parcheggi presso la zona artigianale in Via degli Artigiani.</p>
+      </div>
+      <div class="note-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+        <div class="note-title font-serif">Calzature</div>
+        <p class="note-body">Il percorso ha gradini e pendenze: sono consigliate calzature adeguate. Sconsigliati i passeggini.</p>
+      </div>
+      <div class="note-card">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+        <div class="note-title font-serif">Maltempo &amp; Amici a 4 zampe</div>
+        <p class="note-body">La camminata si svolge anche in caso di maltempo. Ammessi gli animali domestici al guinzaglio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ISCRIZIONI
+══════════════════════════════════ -->
+<section id="iscrizioni">
+  <div class="iscr-inner">
+    <div class="reveal">
+      <span class="overline">— Iscrizioni —</span>
+      <h2 class="iscr-title font-serif">Ci sei anche tu?<em> Prendi il biglietto.</em></h2>
+      <p class="iscr-desc">Le iscrizioni chiudono a esaurimento biglietti. Ogni partecipante riceve in omaggio il <strong>bicchiere da degustazione</strong>, il marsupio portabicchiere e un gadget ricordo della manifestazione.</p>
+    </div>
+
+    <div class="prices-grid reveal">
+      <div class="price-card dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F1D9A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+        <div class="price-label">Adulti</div>
+        <div class="price-amount font-serif">€ 35</div>
+        <div class="price-note">Menu completo, 7 tappe</div>
+      </div>
+      <div class="price-card light">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+        <div class="price-label">Ragazzi</div>
+        <div class="price-amount font-serif">€ 16</div>
+        <div class="price-note">dai 6 ai 12 anni</div>
+      </div>
+      <div class="price-card light">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+        <div class="price-label">Bambini</div>
+        <div class="price-amount font-serif">Gratis</div>
+        <div class="price-note">fino a 5 anni</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:5rem;">
+      <div class="punti-header">
+        <div>
+          <span class="overline">— Punti vendita —</span>
+          <h3 class="punti-title font-serif">Dove trovare i biglietti</h3>
+        </div>
+        <div class="punti-count">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></svg>
+          <span>13 negozi</span>
+        </div>
+      </div>
+
+      <ul class="negozi-grid">
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">L'Edicoleria</div><div class="negozio-addr">Via Bergamo</div><div class="negozio-city">Montevecchia</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Maxi Sport Merate</div><div class="negozio-addr">Via Spluga, 77</div><div class="negozio-city">Cernusco Lombardone</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Maxi Sport Lissone</div><div class="negozio-addr">Via Nuova Valassina, 346</div><div class="negozio-city">Lissone</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Maxi Sport Sesto</div><div class="negozio-addr">Viale Fulvio Testi, 234</div><div class="negozio-city">Sesto San Giovanni</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Maxi Sport Como</div><div class="negozio-addr">Via Paoli, 47A</div><div class="negozio-city">Como</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Maxi Sport Trezzano</div><div class="negozio-addr">Via Cellini, 2</div><div class="negozio-city">Trezzano sul Naviglio</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Acconciature Mapelli Alvaro</div><div class="negozio-addr">Viale Libertà, 83</div><div class="negozio-city">Monza</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Tabaccheria Devis</div><div class="negozio-addr">Via Colombo, 35</div><div class="negozio-city">Gorgonzola</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Pasticceria Pontiggia</div><div class="negozio-addr">Via L. Da Vinci, 20</div><div class="negozio-city">Paderno d'Adda</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Nuova Edicola Velatese</div><div class="negozio-addr">Via Grazia Deledda, 5/B</div><div class="negozio-city">Usmate</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Il Punto Edicola</div><div class="negozio-addr">Via S. Gaetano, 60</div><div class="negozio-city">Rogoredo di Casatenovo</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Perego Libri</div><div class="negozio-addr">Via dei Mille, 25</div><div class="negozio-city">Barzanò</div></div></li>
+        <li class="negozio"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:4px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><div><div class="negozio-name font-serif">Minimarket Cazzaniga</div><div class="negozio-addr">Via Sant'Ambrogio, 28</div><div class="negozio-city">Triuggio</div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     GALLERIA
+══════════════════════════════════ -->
+<section id="galleria">
+  <div class="galleria-inner">
+    <div class="reveal" style="max-width:48rem;margin-bottom:3rem;">
+      <span class="overline">— Galleria —</span>
+      <h2 class="galleria-title font-serif">Istantanee<em> di una domenica</em> <span style="display:block">nel verde.</span></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1738441391697-7e721212b111?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwzfHxpdGFsaWFuJTIwd2luZSUyMGNoZWVzZSUyMHBhc3RhJTIwb3V0ZG9vciUyMG5hdHVyZXxlbnwwfHx8fDE3NzgwNjc5MjZ8MA&ixlib=rb-4.1.0&q=85" alt="Tavolata italiana all'aperto" loading="lazy">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Tavolata italiana all'aperto</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1604004222017-0a7e06a772a9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwyfHxpdGFsaWFuJTIwd2luZSUyMGNoZWVzZSUyMHBhc3RhJTIwb3V0ZG9vciUyMG5hdHVyZXxlbnwwfHx8fDE3NzgwNjc5MjZ8MA&ixlib=rb-4.1.0&q=85" alt="Calice di vino" loading="lazy">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Calice di vino</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1759161495572-a27d16aae932?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxwZW9wbGUlMjB3YWxraW5nJTIwaW4lMjBuYXR1cmUlMjBwYXRoJTIwaXRhbHl8ZW58MHx8fHwxNzc4MDY3OTM3fDA&ixlib=rb-4.1.0&q=85" alt="Camminata nel verde" loading="lazy">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Camminata nel verde</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1659284409619-2b85eaf567e7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHw0fHxpdGFsaWFuJTIwd2luZSUyMGNoZWVzZSUyMHBhc3RhJTIwb3V0ZG9vciUyMG5hdHVyZXxlbnwwfHx8fDE3NzgwNjc5MjZ8MA&ixlib=rb-4.1.0&q=85" alt="Sentiero nella natura" loading="lazy">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Sentiero nella natura</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://customer-assets.emergentagent.com/job_d291f1d8-231d-4047-bbe7-4a058fa7a21d/artifacts/2joev5gn_Nel_parco_del_Curone_l%27Oasi_del_WWF.jpg" alt="Colline brianzole" loading="lazy">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Colline brianzole</div>
+      </div>
+    </div>
+    <p class="galleria-note reveal">Le foto ufficiali dell'edizione 2026 saranno pubblicate qui dopo l'evento.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     DONAZIONI
+══════════════════════════════════ -->
+<section id="donazioni">
+  <div class="donazioni-inner">
+    <div class="reveal">
+      <span class="overline">— Le associazioni —</span>
+      <h2 class="donazioni-title font-serif">Camminiamo<em> per qualcuno.</em></h2>
+      <p class="donazioni-desc">Parte dell'utile della manifestazione è devoluto a scopo benefico. Queste sono le realtà che sosteniamo quest'anno, insieme.</p>
+    </div>
+
+    <div class="assoc-grid reveal">
+      <div class="assoc-card">
+        <div class="assoc-bubble"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <div class="assoc-logo"><img src="https://customer-assets.emergentagent.com/job_brianza-taste/artifacts/xkcfnzvd_marialetiziaverga-600x185.png" alt="Fondazione Maria Letizia Verga" loading="lazy"></div>
+        <div class="assoc-tag">Ricerca pediatrica</div>
+        <div class="assoc-name font-serif">Fondazione Maria Letizia Verga</div>
+        <div class="assoc-city">Monza</div>
+      </div>
+      <div class="assoc-card">
+        <div class="assoc-bubble"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <div class="assoc-logo"><img src="https://customer-assets.emergentagent.com/job_brianza-taste/artifacts/czfay574_logogranaio-removebg-preview.png" alt="Il Granaio" loading="lazy"></div>
+        <div class="assoc-tag">Solidarietà</div>
+        <div class="assoc-name font-serif">Il Granaio</div>
+        <div class="assoc-city">Paderno d'Adda</div>
+      </div>
+      <div class="assoc-card">
+        <div class="assoc-bubble"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <div class="assoc-logo"><img src="https://customer-assets.emergentagent.com/job_brianza-taste/artifacts/1w2dsp28_girasole-removebg-preview.png" alt="Il Girasole ODV ETS" loading="lazy"></div>
+        <div class="assoc-tag">Amici dei disabili</div>
+        <div class="assoc-name font-serif">Il Girasole ODV ETS</div>
+        <div class="assoc-city">Dolzago</div>
+      </div>
+      <div class="assoc-card">
+        <div class="assoc-bubble"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <div class="assoc-logo"><img src="https://customer-assets.emergentagent.com/job_brianza-taste/artifacts/gc2xx1cu_casaamicamerate.png" alt="Casa Amica" loading="lazy"></div>
+        <div class="assoc-tag">Accoglienza</div>
+        <div class="assoc-name font-serif">Casa Amica</div>
+        <div class="assoc-city">Merate</div>
+      </div>
+      <div class="assoc-card">
+        <div class="assoc-bubble"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#722F37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <div class="assoc-logo"><img src="https://customer-assets.emergentagent.com/job_brianza-taste/artifacts/8ksnef3j_Faresalute-540x865.jpg" alt="Faresalute" loading="lazy"></div>
+        <div class="assoc-tag">Volontariato &amp; salute</div>
+        <div class="assoc-name font-serif">Faresalute</div>
+        <div class="assoc-city">Merate</div>
+      </div>
+    </div>
+
+    <div class="partner-section reveal">
+      <div class="partner-label"><span class="overline">— Con il sostegno di —</span></div>
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          <span class="marquee-item">Parrocchia di Montevecchia<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Comune di Montevecchia<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Comune di Cernusco Lombardone<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Oratorio di Montevecchia<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Gruppo Alpini di Cernusco<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Oratorio di Sartirana di Merate<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">I Bagai e Tusan de Maress<span class="marquee-dot">·</span></span>
+          <!-- duplicate for seamless loop -->
+          <span class="marquee-item">Parrocchia di Montevecchia<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Comune di Montevecchia<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Comune di Cernusco Lombardone<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Oratorio di Montevecchia<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Gruppo Alpini di Cernusco<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">Oratorio di Sartirana di Merate<span class="marquee-dot">·</span></span>
+          <span class="marquee-item">I Bagai e Tusan de Maress<span class="marquee-dot">·</span></span>
+        </div>
+        <div class="fade-left"></div>
+        <div class="fade-right"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CONTATTI
+══════════════════════════════════ -->
+<section id="contatti">
+  <div class="contatti-glow-1"></div>
+  <div class="contatti-glow-2"></div>
+  <div class="contatti-inner">
+    <div class="reveal">
+      <span class="contatti-overline">— Contatti —</span>
+      <h2 class="contatti-title font-serif">Ci vediamo<em>in Brianza.</em></h2>
+    </div>
+    <div class="contatti-grid reveal">
+      <a href="mailto:info@quaterpassperquaterpiatt.com" class="contatti-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1D9A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        <div class="contatti-item-label">Email</div>
+        <div class="contatti-item-value font-serif">info@quaterpassperquaterpiatt.com</div>
+      </a>
+      <a href="tel:+393200676989" class="contatti-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1D9A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="contatti-item-label">Telefono</div>
+        <div class="contatti-item-value font-serif">320 06 76 989</div>
+      </a>
+      <div class="contatti-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1D9A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <div class="contatti-item-label">Sito</div>
+        <div class="contatti-item-value font-serif">quaterpassperquaterpiatt.com</div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=100063489369887" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/4passx4piatt/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Quater pass per quater piatt · Organizzata dalla Parrocchia di Montevecchia</div>
+      <em>21ª edizione · 3 Maggio 2026</em>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── Mobile menu toggle ──
+  document.getElementById('menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+  // Close on link click
+  document.querySelectorAll('#mobile-menu a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+  });
+
+  // ── Scroll reveal ──
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+</script>
+</body>
+</html>
